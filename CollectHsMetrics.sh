@@ -9,6 +9,7 @@ echo ""
 
 
 REF='/media/Data1/jbogoin/ref/fa_hg19/hg19_std/hg19_std.fa'
+
 # BAIT='/media/Data1/jbogoin/ref/SNPXPlex/snps.interval_list'
 # BAIT='/media/Data1/jbogoin/ref/gencode/gencodehg19.ready.target.interval_list'
 BAIT='/media/Data1/jbogoin/ref/cibles/Spatax_CMT_v1_cibles_20210329.interval_list'
