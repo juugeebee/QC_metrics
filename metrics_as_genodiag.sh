@@ -12,11 +12,11 @@ REF='/media/Data1/jbogoin/ref/fa_hg19/hg19_std/hg19_std.fa'
 
 #BAIT='/media/Data1/jbogoin/ref/SNPXPlex/snps.interval_list'
 #BAIT='/media/Data1/jbogoin/ref/gencode/gencodehg19.ready.target.interval_list'
-#BAIT='/media/Data1/jbogoin/ref/cibles_panels_NG/Spatax_CMT_v1_cibles_20210329.interval_list'
-BAIT='/media/Data1/jbogoin/ref/cibles_panels_NG/DIPS_v3_cibles_20210406.interval_list'
+BAIT='/media/Data1/jbogoin/ref/cibles_panels_NG/Spatax_CMT_v1_cibles_20210329.interval_list'
+#BAIT='/media/Data1/jbogoin/ref/cibles_panels_NG/DIPS_v3_cibles_20210406.interval_list'
 
-#TARGET='/media/Data1/jbogoin/ref/cibles_panels_NG/Spatax_CMT_v1_cibles_20210329.bed'
-TARGET='/media/Data1/jbogoin/ref/cibles_panels_NG/DIPS_v3_cibles_20210406.bed'
+TARGET='/media/Data1/jbogoin/ref/cibles_panels_NG/Spatax_CMT_v1_cibles_20210329.bed'
+#TARGET='/media/Data1/jbogoin/ref/cibles_panels_NG/DIPS_v3_cibles_20210406.bed'
 
 # gatk BedToIntervalList \
 #     -I /media/Data1/jbogoin/ref/SNPXPlex/snps.bed \
@@ -35,6 +35,7 @@ samtools flagstat $bam_name > $SAMPLE.flagstat.txt; \
 ## Coverage statistics
 
 # Base coverage
+
 # 1 file
 # gatk DepthOfCoverage \
 # 	-R $REF \
@@ -56,7 +57,7 @@ sed 's/','/\t/g' $SAMPLE.baseCoverage > $SAMPLE.tab.baseCoverage;
 sort -k1,1 -k2,2 $SAMPLE.tab.baseCoverage \
 	| groupBy -g 1,2,3 -c 4 -o mean > $SAMPLE.coverage;
 
-##  Coverage below 30x
+#  Coverage below 30x
 samtools view -b -f 0x2 -F 0x400 $bam_name \
 	| genomeCoverageBed -ibam - -bga \
 	| awk '$4<30' | intersectBed -a $TARGET -b - \

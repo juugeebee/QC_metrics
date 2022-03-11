@@ -9,6 +9,8 @@ echo ""
 
 for f in *.fastq.gz; do fastqc $f; done
 
+multiqc .
+
 echo ""
 echo "fastqc.sh job done!"
 echo ""
