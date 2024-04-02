@@ -10,7 +10,6 @@ echo "depth.sh start!"
 echo ""
 
 #Couverture totale a chaque position du bed
-
 for bam_name in *.dedup.bam; \
 do SAMPLE=${bam_name%%.dedup.bam}; \
 
